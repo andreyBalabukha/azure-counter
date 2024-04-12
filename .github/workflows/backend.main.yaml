@@ -1,0 +1,41 @@
+name: Build and Deploy .NET Azure Function
+
+on:
+  push:
+      branches: [ main ]
+      paths:
+        - "backend/**"
+
+env:
+  DOTNET_VERSION: '6.0.x'  # Define .NET version globally
+  CONFIGURATION: Release
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: "backend"
+  AZURE_FUNCTIONAPP_NAME: "azureCounterApp"
+
+jobs:
+  build-and-deploy:
+    runs-on: windows-latest
+
+    steps:
+    - name: "Login via Azure CLI"
+      uses: azure/login@v1
+      with:
+          creds: ${{ secrets.AZURE_COUNTER }}
+
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+
+    - name: "Resolve Project Dependencies using .Net"
+      shell: pwsh
+      run: pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/api' dotnet build --configuration Release --output ./output popd
+
+    - name: Deploy to Azure Functions
+      uses: Azure/functions-action@v1
+      with:
+        app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }} 
+        package: "${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/api/output" 
