@@ -4,6 +4,70 @@
     "/Users/andreybalabukha/Documents/azure/azure-counter/backend/tests/tests.csproj": {}
   },
   "projects": {
+    "/Users/andreybalabukha/Documents/azure/azure-counter/backend/api/api.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/andreybalabukha/Documents/azure/azure-counter/backend/api/api.csproj",
+        "projectName": "api",
+        "projectPath": "/Users/andreybalabukha/Documents/azure/azure-counter/backend/api/api.csproj",
+        "packagesPath": "/Users/andreybalabukha/.nuget/packages/",
+        "outputPath": "/Users/andreybalabukha/Documents/azure/azure-counter/backend/api/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/andreybalabukha/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.Azure.WebJobs.Extensions.CosmosDB": {
+              "target": "Package",
+              "version": "[3.0.10, )"
+            },
+            "Microsoft.NET.Sdk.Functions": {
+              "target": "Package",
+              "version": "[4.2.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.100-rc.1.23463.5/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "/Users/andreybalabukha/Documents/azure/azure-counter/backend/tests/tests.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -26,7 +90,11 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "/Users/andreybalabukha/Documents/azure/azure-counter/backend/api/api.csproj": {
+                "projectPath": "/Users/andreybalabukha/Documents/azure/azure-counter/backend/api/api.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
