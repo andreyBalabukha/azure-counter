@@ -32,7 +32,10 @@ jobs:
 
     - name: "Resolve Project Dependencies using .Net"
       shell: pwsh
-      run: pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/api' dotnet build --configuration Release --output ./output popd
+      run: | 
+        pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/api' 
+        dotnet build --configuration Release --output ./output 
+        popd
 
     - name: Deploy to Azure Functions
       uses: Azure/functions-action@v1
